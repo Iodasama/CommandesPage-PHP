@@ -24,13 +24,18 @@ class Review
     private ?\DateTimeInterface $createdAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'reviews')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)] // il faut que cela soit nullable sinon le user_id ne pouvant etre NULL il est impossible de creer le review
     private ?User $user = null;
 
-    #[ORM\ManyToOne(inversedBy: 'reviews')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(inversedBy: 'reviews')] // il faut que cela soit nullable sinon le book_id ne pouvant etre NULL il est impossible de creer le review
+    #[ORM\JoinColumn(nullable: true)]
     private ?Book $book = null;
 
+    public function __construct() { // penser a bien le mettre sinon ca passe pas au niveau des dates quand on veut creer le review
+
+        $this->createdAt=new \DateTime(datetime:'NOW');
+
+    }
     public function getId(): ?int
     {
         return $this->id;

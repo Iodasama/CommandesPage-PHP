@@ -16,6 +16,7 @@ return [
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/admin/articles-list-db' => [[['_route' => 'admin_articles_list_db', '_controller' => 'App\\Controller\\Admin\\AdminArticlesController::adminListArticlesFromDb'], null, null, null, false, false, null]],
         '/admin/insert-formbuilder' => [[['_route' => 'admin_article_insert_formbuilder', '_controller' => 'App\\Controller\\Admin\\AdminArticlesController::insertArticles'], null, null, null, false, false, null]],
+        '/admin/books/insert' => [[['_route' => 'admin_insert_book', '_controller' => 'App\\Controller\\Admin\\AdminBookController::insertAdminBook'], null, null, null, false, false, null]],
         '/Admin/categories-list-db' => [[['_route' => 'admin_categories_list_db', '_controller' => 'App\\Controller\\Admin\\AdminCategoriesController::adminListCategoriesFromDb'], null, null, null, false, false, null]],
         '/Admin-insert-category-formbuilder' => [[['_route' => 'Admin_category_insert_formbuilder', '_controller' => 'App\\Controller\\Admin\\AdminCategoriesController::insertCategories'], null, null, null, false, false, null]],
         '/admin/users/insert' => [[['_route' => 'admin_insert_user', '_controller' => 'App\\Controller\\Admin\\AdminUserController::insertAdminUser'], null, null, null, false, false, null]],
@@ -58,6 +59,7 @@ return [
                     .'|articles/([^/]++)(*:390)'
                     .'|categories/([^/]++)(*:417)'
                 .')'
+                .'|/users/insert\\-review/([^/]++)(*:456)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -74,8 +76,9 @@ return [
         306 => [[['_route' => 'delete_category', '_controller' => 'App\\Controller\\Admin\\AdminCategoriesController::deleteCategory'], ['id'], null, null, false, true, null]],
         354 => [[['_route' => 'Admin_category_update_formbuilder', '_controller' => 'App\\Controller\\Admin\\AdminCategoriesController::updateCategories'], ['id'], null, null, false, true, null]],
         390 => [[['_route' => 'article_db_by_id', '_controller' => 'App\\Controller\\Guest\\ArticlesController::showArticleById'], ['id'], null, null, false, true, null]],
-        417 => [
-            [['_route' => 'category_db_by_id', '_controller' => 'App\\Controller\\Guest\\ArticlesController::showCategoryById'], ['id'], null, null, false, true, null],
+        417 => [[['_route' => 'category_db_by_id', '_controller' => 'App\\Controller\\Guest\\ArticlesController::showCategoryById'], ['id'], null, null, false, true, null]],
+        456 => [
+            [['_route' => 'users_insert_review', '_controller' => 'App\\Controller\\Guest\\ReviewController::insertReview'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

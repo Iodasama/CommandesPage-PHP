@@ -2,8 +2,6 @@
 
 namespace App\Controller\Admin;
 
-
-
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,7 +19,7 @@ class AdminUserController extends AbstractController
             $email = $request->request->get('email');
             $password = $request->request->get('password'); // avec la methode Post la demande de création du user a été envoyée, je recupere les donnees POST
 
-            $user = new User(); // instancie une nouvelle classe User
+            $user = new User(); // on instancie une nouvelle classe User
 
             try {
                 $hashedPassword = $passwordHasher->hashPassword(

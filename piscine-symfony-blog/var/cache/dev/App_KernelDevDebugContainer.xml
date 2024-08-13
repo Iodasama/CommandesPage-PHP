@@ -357,6 +357,13 @@
         <argument type="service" id=".service_locator.QaaoWjx.App\Controller\Admin\AdminArticlesController"/>
       </call>
     </service>
+    <service id="App\Controller\Admin\AdminBookController" class="App\Controller\Admin\AdminBookController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.QaaoWjx.App\Controller\Admin\AdminBookController"/>
+      </call>
+    </service>
     <service id="App\Controller\Admin\AdminCategoriesController" class="App\Controller\Admin\AdminCategoriesController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -385,8 +392,12 @@
         <argument type="service" id=".service_locator.QaaoWjx.App\Controller\Guest\HomeController"/>
       </call>
     </service>
-    <service id="App\Controller\Guest\ReviewController" class="App\Controller\Guest\ReviewController" autowire="true" autoconfigure="true">
-      <tag name="container.error" message="The autoloader expected class &quot;App\Controller\Guest\ReviewController&quot; to be defined in file &quot;/Users/iodasama/Documents/Dossier JT/PHP/piscine-symfony-blog/vendor/composer/../../src/Controller/Guest/ReviewController.php&quot;. The file was found but the class was not in it, the class name or namespace probably has a typo."/>
+    <service id="App\Controller\Guest\ReviewController" class="App\Controller\Guest\ReviewController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.QaaoWjx.App\Controller\Guest\ReviewController"/>
+      </call>
     </service>
     <service id="App\Controller\Guest\UserController" class="App\Controller\Guest\UserController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
@@ -459,7 +470,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.ZP9wUCn"/>
+      <argument type="service" id=".service_locator.aYi9EAt"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -3106,7 +3117,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.ZP9wUCn"/>
+      <argument type="service" id=".service_locator.aYi9EAt"/>
     </service>
     <service id="debug.log_processor" class="Symfony\Bridge\Monolog\Processor\DebugProcessor">
       <tag name="kernel.reset" method="reset"/>
@@ -6946,6 +6957,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Admin\AdminArticlesController" class="App\Controller\Admin\AdminArticlesController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Admin\AdminArticlesController" class="App\Controller\Admin\AdminArticlesController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\Admin\AdminArticlesController" class="App\Controller\Admin\AdminArticlesController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Admin\AdminBookController" class="App\Controller\Admin\AdminBookController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Admin\AdminBookController" class="App\Controller\Admin\AdminBookController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Admin\AdminBookController" class="App\Controller\Admin\AdminBookController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Admin\AdminCategoriesController" class="App\Controller\Admin\AdminCategoriesController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Admin\AdminCategoriesController" class="App\Controller\Admin\AdminCategoriesController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\Admin\AdminCategoriesController" class="App\Controller\Admin\AdminCategoriesController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6958,6 +6972,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Guest\HomeController" class="App\Controller\Guest\HomeController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Guest\HomeController" class="App\Controller\Guest\HomeController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\Guest\HomeController" class="App\Controller\Guest\HomeController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Guest\ReviewController" class="App\Controller\Guest\ReviewController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Guest\ReviewController" class="App\Controller\Guest\ReviewController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Guest\ReviewController" class="App\Controller\Guest\ReviewController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Guest\UserController" class="App\Controller\Guest\UserController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Guest\UserController" class="App\Controller\Guest\UserController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\Guest\UserController" class="App\Controller\Guest\UserController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -7566,6 +7583,18 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.f0MmMYB" method="withContext"/>
     </service>
+    <service id=".service_locator.P.blNFL" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.P.blNFL.App\Controller\Admin\AdminBookController::insertAdminBook()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Admin\AdminBookController::insertAdminBook()"/>
+      <argument>App\Controller\Admin\AdminBookController::insertAdminBook()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.P.blNFL" method="withContext"/>
+    </service>
     <service id=".service_locator.MEncpnc" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7590,12 +7619,6 @@
       <argument>App\Controller\Admin\AdminCategoriesController::deleteCategory()</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.uZAU9uc" method="withContext"/>
-    </service>
-    <service id=".service_locator.P.blNFL" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
-      </argument>
     </service>
     <service id=".service_locator.P.blNFL.App\Controller\Admin\AdminCategoriesController::insertCategories()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Admin\AdminCategoriesController::insertCategories()"/>
@@ -7653,25 +7676,40 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.MEncpnc" method="withContext"/>
     </service>
+    <service id=".service_locator.WrRCf2S" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
+        <argument key="bookRepository" type="service_closure" id="App\Repository\BookRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.WrRCf2S.App\Controller\Guest\ReviewController::insertReview()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Guest\ReviewController::insertReview()"/>
+      <argument>App\Controller\Guest\ReviewController::insertReview()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.WrRCf2S" method="withContext"/>
+    </service>
     <service id=".service_locator.r_XOrDH.App\Controller\Guest\UserController::insertUser()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Guest\UserController::insertUser()"/>
       <argument>App\Controller\Guest\UserController::insertUser()</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.r_XOrDH" method="withContext"/>
     </service>
-    <service id=".service_locator.mXDaS5b" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.q9Fxc3f" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.mXDaS5b.App\Controller\SecurityController::login()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.q9Fxc3f.App\Controller\SecurityController::login()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\SecurityController::login()"/>
       <argument>App\Controller\SecurityController::login()</argument>
       <argument type="service" id="service_container"/>
-      <factory service=".service_locator.mXDaS5b" method="withContext"/>
+      <factory service=".service_locator.q9Fxc3f" method="withContext"/>
     </service>
-    <service id=".service_locator.ZP9wUCn" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.aYi9EAt" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.4wc4Ag1.kernel::registerContainerConfiguration()"/>
@@ -7682,6 +7720,7 @@
         <argument key="App\Controller\Admin\AdminArticlesController::deleteArticle" type="service_closure" id=".service_locator.dVEa85z.App\Controller\Admin\AdminArticlesController::deleteArticle()"/>
         <argument key="App\Controller\Admin\AdminArticlesController::insertArticles" type="service_closure" id=".service_locator.PFXmw2u.App\Controller\Admin\AdminArticlesController::insertArticles()"/>
         <argument key="App\Controller\Admin\AdminArticlesController::updateArticles" type="service_closure" id=".service_locator.f0MmMYB.App\Controller\Admin\AdminArticlesController::updateArticles()"/>
+        <argument key="App\Controller\Admin\AdminBookController::insertAdminBook" type="service_closure" id=".service_locator.P.blNFL.App\Controller\Admin\AdminBookController::insertAdminBook()"/>
         <argument key="App\Controller\Admin\AdminCategoriesController::adminListCategoriesFromDb" type="service_closure" id=".service_locator.MEncpnc.App\Controller\Admin\AdminCategoriesController::adminListCategoriesFromDb()"/>
         <argument key="App\Controller\Admin\AdminCategoriesController::deleteCategory" type="service_closure" id=".service_locator.uZAU9uc.App\Controller\Admin\AdminCategoriesController::deleteCategory()"/>
         <argument key="App\Controller\Admin\AdminCategoriesController::insertCategories" type="service_closure" id=".service_locator.P.blNFL.App\Controller\Admin\AdminCategoriesController::insertCategories()"/>
@@ -7691,14 +7730,16 @@
         <argument key="App\Controller\Guest\ArticlesController::showArticleById" type="service_closure" id=".service_locator.IqSceiR.App\Controller\Guest\ArticlesController::showArticleById()"/>
         <argument key="App\Controller\Guest\ArticlesController::listCategoriesFromDb" type="service_closure" id=".service_locator.MEncpnc.App\Controller\Guest\ArticlesController::listCategoriesFromDb()"/>
         <argument key="App\Controller\Guest\ArticlesController::showCategoryById" type="service_closure" id=".service_locator.MEncpnc.App\Controller\Guest\ArticlesController::showCategoryById()"/>
+        <argument key="App\Controller\Guest\ReviewController::insertReview" type="service_closure" id=".service_locator.WrRCf2S.App\Controller\Guest\ReviewController::insertReview()"/>
         <argument key="App\Controller\Guest\UserController::insertUser" type="service_closure" id=".service_locator.r_XOrDH.App\Controller\Guest\UserController::insertUser()"/>
-        <argument key="App\Controller\SecurityController::login" type="service_closure" id=".service_locator.mXDaS5b.App\Controller\SecurityController::login()"/>
+        <argument key="App\Controller\SecurityController::login" type="service_closure" id=".service_locator.q9Fxc3f.App\Controller\SecurityController::login()"/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.4wc4Ag1.kernel::registerContainerConfiguration()"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.4wc4Ag1.kernel::loadRoutes()"/>
         <argument key="App\Controller\Admin\AdminArticlesController:adminListArticlesFromDb" type="service_closure" id=".service_locator.IqSceiR.App\Controller\Admin\AdminArticlesController::adminListArticlesFromDb()"/>
         <argument key="App\Controller\Admin\AdminArticlesController:deleteArticle" type="service_closure" id=".service_locator.dVEa85z.App\Controller\Admin\AdminArticlesController::deleteArticle()"/>
         <argument key="App\Controller\Admin\AdminArticlesController:insertArticles" type="service_closure" id=".service_locator.PFXmw2u.App\Controller\Admin\AdminArticlesController::insertArticles()"/>
         <argument key="App\Controller\Admin\AdminArticlesController:updateArticles" type="service_closure" id=".service_locator.f0MmMYB.App\Controller\Admin\AdminArticlesController::updateArticles()"/>
+        <argument key="App\Controller\Admin\AdminBookController:insertAdminBook" type="service_closure" id=".service_locator.P.blNFL.App\Controller\Admin\AdminBookController::insertAdminBook()"/>
         <argument key="App\Controller\Admin\AdminCategoriesController:adminListCategoriesFromDb" type="service_closure" id=".service_locator.MEncpnc.App\Controller\Admin\AdminCategoriesController::adminListCategoriesFromDb()"/>
         <argument key="App\Controller\Admin\AdminCategoriesController:deleteCategory" type="service_closure" id=".service_locator.uZAU9uc.App\Controller\Admin\AdminCategoriesController::deleteCategory()"/>
         <argument key="App\Controller\Admin\AdminCategoriesController:insertCategories" type="service_closure" id=".service_locator.P.blNFL.App\Controller\Admin\AdminCategoriesController::insertCategories()"/>
@@ -7708,8 +7749,9 @@
         <argument key="App\Controller\Guest\ArticlesController:showArticleById" type="service_closure" id=".service_locator.IqSceiR.App\Controller\Guest\ArticlesController::showArticleById()"/>
         <argument key="App\Controller\Guest\ArticlesController:listCategoriesFromDb" type="service_closure" id=".service_locator.MEncpnc.App\Controller\Guest\ArticlesController::listCategoriesFromDb()"/>
         <argument key="App\Controller\Guest\ArticlesController:showCategoryById" type="service_closure" id=".service_locator.MEncpnc.App\Controller\Guest\ArticlesController::showCategoryById()"/>
+        <argument key="App\Controller\Guest\ReviewController:insertReview" type="service_closure" id=".service_locator.WrRCf2S.App\Controller\Guest\ReviewController::insertReview()"/>
         <argument key="App\Controller\Guest\UserController:insertUser" type="service_closure" id=".service_locator.r_XOrDH.App\Controller\Guest\UserController::insertUser()"/>
-        <argument key="App\Controller\SecurityController:login" type="service_closure" id=".service_locator.mXDaS5b.App\Controller\SecurityController::login()"/>
+        <argument key="App\Controller\SecurityController:login" type="service_closure" id=".service_locator.q9Fxc3f.App\Controller\SecurityController::login()"/>
       </argument>
     </service>
     <service id=".service_locator.ea.H0ae" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -8241,6 +8283,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.QaaoWjx" method="withContext"/>
     </service>
+    <service id=".service_locator.QaaoWjx.App\Controller\Admin\AdminBookController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Admin\AdminBookController"/>
+      <argument>App\Controller\Admin\AdminBookController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.QaaoWjx" method="withContext"/>
+    </service>
     <service id=".service_locator.QaaoWjx.App\Controller\Admin\AdminCategoriesController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Admin\AdminCategoriesController"/>
       <argument>App\Controller\Admin\AdminCategoriesController</argument>
@@ -8262,6 +8310,12 @@
     <service id=".service_locator.QaaoWjx.App\Controller\Guest\HomeController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\Guest\HomeController"/>
       <argument>App\Controller\Guest\HomeController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.QaaoWjx" method="withContext"/>
+    </service>
+    <service id=".service_locator.QaaoWjx.App\Controller\Guest\ReviewController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\Guest\ReviewController"/>
+      <argument>App\Controller\Guest\ReviewController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.QaaoWjx" method="withContext"/>
     </service>
@@ -8451,10 +8505,12 @@
         <argument type="collection">
           <argument>App\Kernel</argument>
           <argument>App\Controller\Admin\AdminArticlesController</argument>
+          <argument>App\Controller\Admin\AdminBookController</argument>
           <argument>App\Controller\Admin\AdminCategoriesController</argument>
           <argument>App\Controller\Admin\AdminUserController</argument>
           <argument>App\Controller\Guest\ArticlesController</argument>
           <argument>App\Controller\Guest\HomeController</argument>
+          <argument>App\Controller\Guest\ReviewController</argument>
           <argument>App\Controller\Guest\UserController</argument>
           <argument>App\Controller\SecurityController</argument>
           <argument>Doctrine\Bundle\DoctrineBundle\Controller\ProfilerController</argument>
@@ -9733,7 +9789,7 @@
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.pRu6x_4" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.ZP9wUCn"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.aYi9EAt"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.BxSdgVt"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -9776,12 +9832,13 @@
     <service id=".service_locator.DxNflmh" alias=".service_locator.dVEa85z"/>
     <service id=".service_locator.HTmB.qS" alias=".service_locator.PFXmw2u"/>
     <service id=".service_locator.64Qjvvy" alias=".service_locator.f0MmMYB"/>
+    <service id=".service_locator.4KsIGyf" alias=".service_locator.P.blNFL"/>
     <service id=".service_locator.ry8PWkS" alias=".service_locator.MEncpnc"/>
     <service id=".service_locator.pDW4bJ_" alias=".service_locator.uZAU9uc"/>
-    <service id=".service_locator.4KsIGyf" alias=".service_locator.P.blNFL"/>
     <service id=".service_locator.vqXGhtO" alias=".service_locator.AAtH1eF"/>
     <service id=".service_locator.5jQ6XPE" alias=".service_locator.r_XOrDH"/>
-    <service id=".service_locator...2Ndi3" alias=".service_locator.mXDaS5b"/>
+    <service id=".service_locator._l1fyex" alias=".service_locator.WrRCf2S"/>
+    <service id=".service_locator.r9qlJsJ" alias=".service_locator.q9Fxc3f"/>
     <service id=".service_locator.b491maD" alias=".service_locator.QaaoWjx"/>
   </services>
 </container>

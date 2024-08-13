@@ -38,13 +38,15 @@ class Article
 
     #[ORM\Column]
     private ?bool $isPublished = null;
-// Permet de supprimer en "cascade"
+
+    // Permet de supprimer en "cascade"
     // les articles liés à une catégorie
     // quand la catégorie est supprimée
     //#[ORM\JoinColumn(onDelete: "CASCADE")]
     // quand la catégorie est supprimée
-        // on supprime la valeur de category_id dans les articles
-        // liés à la catégorie
+    // on supprime la valeur de category_id dans les articles
+    // liés à la catégorie
+
     public function __construct() { // penser a bien le mettre sinon ca passe pas au niveau des dates
 
         $this->createdAt=new \DateTime(datetime:'NOW');
